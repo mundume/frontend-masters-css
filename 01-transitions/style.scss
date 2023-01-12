@@ -41,7 +41,7 @@ body {
   height: var(--input-height);
   border: 2px solid var(--color);
   border-radius: 0.25rem;
-  
+
   outline: none;
   transition-property: border-color;
   transition-duration: 0.3s;
@@ -56,8 +56,17 @@ body {
   border-radius: 0.25rem;
   height: var(--input-height);
   background-color: var(--color);
-  transition-property: background-color;
+  transition-property: background-color, opacity, transform, scale;
   transition-duration: 0.3s;
+  transition-timing-function: ease-in, linear, ease-out;
+  cursor: pointer;
+  &:hover{
+    opacity: 0.5;
+    scale: 1.1;
+  }
+  &:active {
+      transform: translateY(10%);
+  }
 }
 
 [data-show]:not([data-active]) {
