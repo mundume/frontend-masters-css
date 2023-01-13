@@ -26,6 +26,9 @@ body {
   grid-template-rows: 1fr;
   grid-column-gap: 1rem;
   grid-template-areas: 'input button';
+  animation-name: slide-up;
+    animation-duration: 1.3s;
+    animation-timing-function: ease-in-out;
 
   // Add an animation here
 
@@ -37,6 +40,11 @@ body {
   > .ui-input,
   > .ui-button {
     // Add an animation here
+    animation-name: slide-up;
+      animation-duration: 1s;
+      animation-timing-function: ease-in-out;
+      animation-delay: 1s;
+       animation-fill-mode: both;
   }
 }
 
@@ -48,7 +56,15 @@ body {
   border-radius: 0.25rem;
   outline: none;
   transition: inherit;
+
+  &:invalid:not(:focus){
+    animation: shake 0.3s;
+  }
+  
 }
+
+
+
 
 .ui-button {
   grid-area: button;
@@ -71,9 +87,35 @@ body {
 }
 
 @keyframes slide-up {
-  // Add keyframes here
+ from {
+  opacity: 0;
+
+  transform:translateY(100%)
+ }
+
+  
+50%{
+  opacity: 0.6;
+}
+ to {
+  opacity: 1;
+  transform: none;
+  
+ }
 }
 
 @keyframes shake {
   // Add a shake animation here
+  from,to{
+    transform: none;
+  }
+  20%, 40%, 60%,80%{
+    transform: translateX(10%);
+  }
+     10%,
+     30%,
+     50%,
+     70%, 90% {
+       transform: translateX(-10%);
+     }
 }
