@@ -2,7 +2,9 @@
 
 :root {
   --primary-color:white;
-  --duration:1s;
+  --duration:0.5s;
+  --stagger: 0.1s;
+  --interval: calc(var(--duration)-var(var(--stagger)))
   --easing:cubic-bezier(0.5, 0, 0.5, 1)
 }
 
@@ -33,33 +35,35 @@ ul {
   height: 10vmin;
   left: 50vw;
   width: 10vmin;
-  border-radius: 50%;
+border-radius: 50%;
  background: #fb2324;
-//  transition-property:background, transform;
-//  transition-timing-function: linear, ease-in-out;
-//  transition-duration: 0.5s;
-animation-name: move-like-a-square;
-  animation-duration: 4s;
+ margin: 5px;
+
+
+animation: move-right var(--duration) calc(var(--duration)) both;
+
+&:nth-child(2){
+  animation-delay: calc(var(--duration) - var(--stagger))
+}
+&:nth-child(3) {
+  animation-delay: calc(var(--duration)*2 - var(--stagger)*2);
+}
+}
+@keyframes move-right {
+
+  from{
+    transform:none ;
+  }
+  to {
+    transform:translateX(25vw)
+  }
 }
 
-@keyframes move-like-a-square {
-  from , to {
-    transform: none;
-  }
 
-  25% {
-    transform: translateX(20vw);
-  }
-    50% {
-       transform: translateX(20vw) translateY(20vw)
-     }
 
-    75% {
-        transform: translateX(0) translateY(20vw);
-       }
+
 
  
 
     
   
-}
